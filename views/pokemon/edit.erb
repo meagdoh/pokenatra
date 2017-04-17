@@ -1,0 +1,8 @@
+<form action="/pokemon/<%= @pokemon.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+
+  <label for="pokemon[name]">Name:</label>
+  <input name="pokemon[name]" value="<%= @pokemon.name %>">
+  
+  <input type="submit" value="Update">
+</form>
