@@ -31,13 +31,15 @@ post '/pokemon' do
   redirect "/pokemon/#{@pokemon.id}"
 end
 
-get "/pokemon/:id/edit" do
-  @pokemon = Pokemon.find(params[:name])
+put '/pokemon/:id' do
+  @pokemon = Pokemon.find(params[:id])
+  @pokemon.update(name: params[:name],img_url: params[:img_url])
+  redirect "/pokemon/#{@pokemon.id}"
   erb :"pokemon/edit"
 end
 
-put '/pokemon/:id' do
-  @pokemon = Pokemon.find(params[:name])
-  @pokemon.update(params[:name])
-  redirect "/pokemon/#{@pokemon.id}"
+delete '/pokemon/:id' do
+  @pokemon = Pokemon.find(params[:id])
+  @pokemon.destroy
+  redirect("/pokemon")
 end
